@@ -1,5 +1,7 @@
 package com.example.httpserver.dto;
 
+import com.example.httpserver.entity.UserEntity;
+
 public class UserDto {
     private Long id;
     private String username;
@@ -24,5 +26,9 @@ public class UserDto {
 
     public String getRole() {
         return role;
+    }
+
+    public static UserDto toDto(UserEntity user) {
+        return new UserDto(user.getId(), user.getUsername(), user.getRole().name());
     }
 }
