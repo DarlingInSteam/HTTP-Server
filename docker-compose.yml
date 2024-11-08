@@ -1,20 +1,26 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:latest
-    container_name: user_roles_db
+  database:
+    container_name: database
+    image: "postgres:15-alpine"
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: httpserver
+      PG_DATA: "database:/data/postgres"
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+      - database:/data/postgres
     ports:
       - "5432:5432"
-    volumes:
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    restart: always
     networks:
-      - app-network
+      - http-network
+
+volumes:
+  database:
 
 networks:
-  app-network:
+  http-network:
     driver: bridge
