@@ -74,7 +74,6 @@ public class UserService {
         var userWriter = userRepository.findByUsername(usernameWriter).orElseThrow();
         if (userWriter.getRole() != Role.ADMIN) {
             throw new IllegalArgumentException("Only admin can change user username");
-
         }
 
         return userRepository.findByUsername(usernameEditing)
