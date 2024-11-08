@@ -31,8 +31,11 @@ public class UserService {
                 .toList();
     }
 
-    public void deleteUserById(Long id) {
+    public boolean deleteUserById(Long id) {
+        userRepository.findById(id).orElseThrow();
         userRepository.deleteById(id);
+
+        return true;
     }
 
     public void deleteUserByUsername(String username) {
