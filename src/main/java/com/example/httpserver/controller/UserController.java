@@ -33,27 +33,27 @@ public class UserController {
     }
 
     @PutMapping("/{username}/role")
-    public ResponseEntity setUserRole(@PathVariable String user, @RequestParam String writer, @RequestParam Role role) {
+    public ResponseEntity setUserRole(@PathVariable String username, @RequestParam String writer, @RequestParam Role role) {
         try {
-            return ResponseEntity.ok(userService.updateUserRole(writer, user, role));
+            return ResponseEntity.ok(userService.updateUserRole(writer, username, role));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
 
     @PutMapping("/{username}/username")
-    public ResponseEntity setUserUsername(@PathVariable String user, @RequestParam String writer, @RequestParam String username) {
+    public ResponseEntity setUserUsername(@PathVariable String username, @RequestParam String writer, @RequestParam String newUsername) {
         try {
-            return ResponseEntity.ok(userService.updateUserUsername(writer, user, username));
+            return ResponseEntity.ok(userService.updateUserUsername(writer, username, newUsername));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
 
     @PutMapping("/{username}/password")
-    public ResponseEntity setUserPassword(@PathVariable String user, @RequestParam String writer, @RequestParam String password) {
+    public ResponseEntity setUserPassword(@PathVariable String username, @RequestParam String writer, @RequestParam String password) {
         try {
-            return ResponseEntity.ok(userService.updateUserPassword(writer, user, password));
+            return ResponseEntity.ok(userService.updateUserPassword(writer, username, password));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
