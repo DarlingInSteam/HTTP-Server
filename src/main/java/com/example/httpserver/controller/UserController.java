@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     @Autowired private UserService userService;
 
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity getUsers() {
         try {
             return ResponseEntity.ok(userService.getAllUsers());
