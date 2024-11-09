@@ -29,15 +29,15 @@ services:
     ports:
       - "8080:8080" 
 
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com    # Укажите email для входа в pgAdmin
-      PGADMIN_DEFAULT_PASSWORD: admin             # Укажите пароль для входа в pgAdmin
-    ports:
-      - "5050:80"                                 # Открываем порт для доступа к pgAdmin
-    networks:
-      - http-network
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: admin
+#    ports:
+#      - "5050:80"
+#    networks:
+#      - http-network
 
 volumes:
   database:
